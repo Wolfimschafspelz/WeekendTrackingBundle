@@ -1,0 +1,25 @@
+{
+    "name": "wolfimschafspelz/weekend-tracking",
+    "description": "A Kimai 2 plugin to track weekend times",
+    "homepage": "https://www.github.com/wolfimschafspelz",
+    "type": "kimai-plugin",
+    "version": "0.1",
+    "require": {
+        "kimai/kimai2-composer": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukas Steinmann",
+            "email": "lukas.steinmann@gmx.de",
+            "homepage": "https://www.github.com/wolfimschafspelz"
+        }
+    ],
+    "extra": {
+        "kimai": {
+            "require": "1.3",
+            "version": "0.1",
+            "name": "Weekend Time Tracking"
+        }
+    }
+}

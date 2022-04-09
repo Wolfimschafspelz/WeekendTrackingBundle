@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        bind:
+
+    KimaiPlugin\WeekendTrackingBundle\:
+        resource: '../../*'
+        exclude: '../../{Resources}'
