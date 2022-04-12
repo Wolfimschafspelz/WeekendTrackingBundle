@@ -4,7 +4,7 @@ namespace KimaiPlugin\WeekendTrackingBundle\EventSubscriber;
 use App\Event\DashboardEvent;
 use App\Model\Widget;
 use App\Widget\Type\CompoundRow;
-use KimaiPlugin\WeekendTrackingBundle\Widget\HelloWidget;
+use KimaiPlugin\WeekendTrackingBundle\Widget\WeekendHourWidget;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class DashboardSubscriber implements EventSubscriberInterface
@@ -20,12 +20,12 @@ class DashboardSubscriber implements EventSubscriberInterface
         $section->setOrder(20);
 
         $section->addWidget(
-            (new HelloWidget())
-                ->setId('custom-widget-id')
-                ->setTitle('Hello World!')
-                ->setData([])
+            (new WeekendHourWidget())
+                ->setId('weekend-hours')
+                ->setTitle('Weekend Hours to spare')
                 ->setOptions([
-                    'icon' => 'time',
+                    'icon' => 'duration',
+                    'dataType' => 'duration'
                 ])
         );
 
