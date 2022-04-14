@@ -1,17 +1,9 @@
 <?php
 namespace KimaiPlugin\WeekendTrackingBundle\Widget;
 
-use App\Widget\Type\AbstractUserAmountPeriod;
+use App\Widget\Type\SimpleWidget;
 
-class WeekendHourWidget extends AbstractUserAmountPeriod {
-
-    public function getOptions(array $options = []): array
-    {
-        return array_merge([
-            'icon' => 'duration', 
-            'dataType' => 'duration'
-        ], parent::getOptions($options));
-    }
+class WeekendHourWidget extends SimpleWidget {
 
     public function getData(array $options = [])
     {
