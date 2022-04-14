@@ -23,10 +23,6 @@ class DashboardSubscriber implements EventSubscriberInterface
             (new WeekendHourWidget())
                 ->setId('weekend-hours')
                 ->setTitle('Weekend Hours to spare')
-                ->setOptions([
-                    'icon' => 'duration',
-                    'dataType' => 'duration'
-                ])
         );
 
        $event->addSection($section);
