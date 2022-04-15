@@ -8,7 +8,7 @@ use App\Repository\TimesheetRepository;
 use App\Widget\Type\SimpleWidget;
 use App\Widget\Type\UserWidget;
 
-class WeekendHourWidget extends SimpleWidget implements UserWidget
+class WeekendHourWidget extends SimpleWidget
 {
     private TimesheetRepository $repository;
 
@@ -31,6 +31,7 @@ class WeekendHourWidget extends SimpleWidget implements UserWidget
     {
         return array_merge([
             'icon' => 'duration',
+            'user' => true,
             'dataType' => 'duration'
         ]);
     }
@@ -43,10 +44,15 @@ class WeekendHourWidget extends SimpleWidget implements UserWidget
         $entries = $this->repository->getTimesheetsForQuery($query);
 
         foreach ($entries as $sheet) {
-            if($sheet->getBegin()->format('Y') == date('Y')) {
-                $weekDay = $sheet->getBegin()->format('w');
-                if ($weekDay == 0 || $weekDay == 6) {
-                    $weekendHours += $sheet->getDuration();
+            if($sheet->getCategory() == 'holiday') {
+                //TODO: $weekendHours -= x;
+            }
+            else {
+                if ($sheet->getBegin()->format('Y') == date('Y')) {
+                    $weekDay = $sheet->getBegin()->format('w');
+                    if ($weekDay == 0 || $weekDay == 6) {
+                        $weekendHours += $sheet->getDuration();
+                    }
                 }
             }
         }
@@ -57,10 +63,5 @@ class WeekendHourWidget extends SimpleWidget implements UserWidget
     public function getTemplateName(): string
     {
         return 'widget/widget-counter.html.twig';
-    }
-
-    public function setUser(User $user): void
-    {
-        $this->user = $user;
     }
 }
