@@ -16,13 +16,14 @@ class DashboardSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents(): array
     {
-        return [DashboardEvent::class => ['onDashboardEvent', 200]];
+        return [DashboardEvent::class => 'onDashboardEvent'];
     }
 
     public function onDashboardEvent(DashboardEvent $event)
     {
         $section = new CompoundRow();
         $section->setOrder(20);
+        $this->weekendHourWidget->setUser($event->getUser());
 
         $section->addWidget($this->weekendHourWidget);
 
